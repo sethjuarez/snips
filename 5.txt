@@ -1,0 +1,3 @@
+// save model
+using (var f = new FileStream("model.zip", FileMode.Create))
+model.AsDynamic.SaveTo(env, f);

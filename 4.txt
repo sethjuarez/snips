@@ -1,0 +1,11 @@
+// read data
+var data = reader.Read(new MultiFileSource(trainDataPath));
+
+// fit linear model using SDCA
+var model = estimator.Fit(data);
+
+// score based on test dataset
+var scores = model.Transform(reader.Read(new MultiFileSource(testDataPath)));
+var metrics = MultiClassClassifierEvaluator.Evaluate(scores, r => r.label, r => r.score);
+
+Console.WriteLine("Accuracy is: " + metrics.AccuracyMacro);

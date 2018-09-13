@@ -1,0 +1,16 @@
+// Train the model
+var env = new TlcEnvironment(new SysRandom(0));
+
+// csv headers:
+//   0   1          2               3         4           5       6                 7                   8
+// hmid,wid,reflection_period,original_hm,cleaned_hm,modified,num_sentence,ground_truth_category,predicted_category
+const int CLEANED_HM = 4;
+const int PREDICTED_CAT = 8;
+
+// create reader
+var reader = TextLoader.CreateReader(env, ctx =>
+                                (Text: ctx.LoadText(CLEANED_HM),
+Category: ctx.LoadText(PREDICTED_CAT)),
+new MultiFileSource(trainDataPath),
+hasHeader: true,
+separator: ',');

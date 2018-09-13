@@ -1,0 +1,10 @@
+public class Feelings
+{
+public string Text { get; set; }
+public string Category { get; set; }
+}
+
+public class FeelingsType
+{
+public string Predicted { get; set; }
+}

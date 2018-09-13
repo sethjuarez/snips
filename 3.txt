@@ -1,0 +1,20 @@
+var loss = new HingeLoss(new HingeLoss.Arguments() { Margin = 1 });
+
+// create estimator
+var estimator = reader.MakeNewEstimator()
+    .Append(row => (
+    // Convert predicted category to key
+label: row.Category.ToKey(),
+// Featurize the text
+features: row.Text.FeaturizeText()))
+.Append(row => (
+// Save label (for eval)
+row.label,
+// linear predictor using SDCA
+score: row.label.PredictSdcaClassification(row.features, loss: loss)))
+.Append(row => (
+// get materialized prediction as well (it's prettier)
+Predicted: row.score.predictedLabel.ToValue(), 
+row.label,
+row.score
+));
