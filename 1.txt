@@ -1,6 +1,6 @@
 var dataPath = @"..\..\..\Data\cleaned_hm.csv";
 var trainDataPath = @"..\..\..\Data\happy_train.csv";
-var testDataPath = @"..\..\..\Data\happy_train.csv";
+var testDataPath = @"..\..\..\Data\happy_test.csv";
 
 // Download cleaned_hm.csv from https://www.kaggle.com/ritresearch/happydb and place it in the Data folder
 string[] dataset = File.ReadAllLines(dataPath);
