@@ -5,7 +5,7 @@ var loss = new HingeLoss(new HingeLoss.Arguments() { Margin = 1 });
 // create estimator
 var estimator = reader.MakeNewEstimator()
     // STEP 1: Numberize the text
-    .Append(row => (
+.Append(row => (
     // TARGET: convert the text category into a number
 label: row.Category.ToKey(),
 // SOURCE: convert the sentence into a vector
