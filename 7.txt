@@ -1,4 +1,4 @@
-var env = new TlcEnvironment(new SysRandom(0));
+var env = new ConsoleEnvironment();
 ITransformer model;
 using (var f = new FileStream("model.zip", FileMode.Open))
 model = TransformerChain.LoadFrom(env, f);

@@ -1,13 +1,4 @@
-var dataPath = @"..\..\..\Data\cleaned_hm.csv";
-var trainDataPath = @"..\..\..\Data\happy_train.csv";
-var testDataPath = @"..\..\..\Data\happy_test.csv";
+var trainDataPath = "happy_train.csv";
+var testDataPath = "happy_test.csv";
 
-// Download cleaned_hm.csv from https://www.kaggle.com/ritresearch/happydb and place it in the Data folder
-string[] dataset = File.ReadAllLines(dataPath);
-            
-// First split the comments
-// Based on https://stackoverflow.com/questions/16878467/sorting-csv-file 
-var numLines = dataset.Length;
-var body = dataset.Skip(1);
-File.WriteAllLines(trainDataPath, dataset.Take(1).Concat(body.Take((int)(numLines * 0.9))));
-File.WriteAllLines(testDataPath, dataset.Take(1).Concat(body.TakeLast((int)(numLines * 0.1))));
+Console.ReadKey();

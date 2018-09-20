@@ -1,20 +1,26 @@
+// loss tells us how bad we are at the task
+// we use it to minimize badness
 var loss = new HingeLoss(new HingeLoss.Arguments() { Margin = 1 });
 
 // create estimator
 var estimator = reader.MakeNewEstimator()
+    // STEP 1: Numberize the text
     .Append(row => (
-    // Convert predicted category to key
+    // TARGET: convert the text category into a number
 label: row.Category.ToKey(),
-// Featurize the text
+// SOURCE: convert the sentence into a vector
 features: row.Text.FeaturizeText()))
+// STEP 2: Create ML model to do predictions
 .Append(row => (
-// Save label (for eval)
+// pass through label
 row.label,
-// linear predictor using SDCA
+// fancy linear model with SDCA optimization
 score: row.label.PredictSdcaClassification(row.features, loss: loss)))
+// STEP 3: output atual predictions
 .Append(row => (
-// get materialized prediction as well (it's prettier)
-Predicted: row.score.predictedLabel.ToValue(), 
+// convert predicted value to actual category
+Predicted: row.score.predictedLabel.ToValue(),
+// pass through label and score for validation 
 row.label,
 row.score
 ));
