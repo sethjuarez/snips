@@ -1,6 +1,0 @@
-// save model
-Console.WriteLine("Saving out model!");
-using (var f = new FileStream("model.zip", FileMode.Create))
-model.AsDynamic.SaveTo(env, f);
-
-Console.WriteLine("Done!");

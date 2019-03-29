@@ -3,55 +3,69 @@
 ; SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SendMode Event
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-SetKeyDelay, 1
+SetKeyDelay, 2
 
 ^+1::
-FileRead, textVar, C:\projects\snips\1.txt
-textVar := StrReplace(textVar, "`r`n", "`n")
-Send, {raw}%textVar%
-Send, {Enter}
+Loop, Read,  C:\projects\snips\1.txt
+{
+    Send, {raw}%A_LoopReadLine%
+    Send, {Enter}
+    Send, {Home}
+}
 return
 
 ^+2::
-FileRead, textVar, C:\projects\snips\2.txt
-textVar := StrReplace(textVar, "`r`n", "`n")
-Send, {raw}%textVar%
-Send, {Enter}
+Loop, Read,  C:\projects\snips\2.txt
+{
+    Send, {raw}%A_LoopReadLine%
+    Send, {Enter}
+    Send, {Home}
+}
 return
 
 ^+3::
-FileRead, textVar, C:\projects\snips\3.txt
-textVar := StrReplace(textVar, "`r`n", "`n")
-Send, {raw}%textVar%
-Send, {Enter}
+Loop, Read,  C:\projects\snips\3.txt
+{
+    Send, {raw}%A_LoopReadLine%
+    Send, {Enter}
+    Send, {Home}
+}
 return
 
 ^+4::
-FileRead, textVar, C:\projects\snips\4.txt
-textVar := StrReplace(textVar, "`r`n", "`n")
-Send, {raw}%textVar%
-Send, {Enter}
+Loop, Read,  C:\projects\snips\4.txt
+{
+    Send, {raw}%A_LoopReadLine%
+    Send, {Enter}
+    Send, {Home}
+}
 return
 
 ^+5::
-FileRead, textVar, C:\projects\snips\5.txt
-textVar := StrReplace(textVar, "`r`n", "`n")
-Send, {raw}%textVar%
-Send, {Enter}
+Loop, Read,  C:\projects\snips\5.txt
+{
+    Send, {raw}%A_LoopReadLine%
+    Send, {Enter}
+    Send, {Home}
+}
 return
 
 ^+6::
-FileRead, textVar, C:\projects\snips\6.txt
-textVar := StrReplace(textVar, "`r`n", "`n")
-Send, {raw}%textVar%
-Send, {Enter}
+Loop, Read,  C:\projects\snips\6.txt
+{
+    Send, {raw}%A_LoopReadLine%
+    Send, {Enter}
+    Send, {Home}
+}
 return
 
 ^+7::
-FileRead, textVar, C:\projects\snips\7.txt
-textVar := StrReplace(textVar, "`r`n", "`n")
-Send, {raw}%textVar%
-Send, {Enter}
+Loop, Read,  C:\projects\snips\7.txt
+{
+    Send, {raw}%A_LoopReadLine%
+    Send, {Enter}
+    Send, {Home}
+}
 return
 
 ^+u::

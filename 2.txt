@@ -1,16 +1,18 @@
-// Train the model
-var env = new ConsoleEnvironment();
+    #onnx
+    input_model = '/mnt/azure/model/latest.h5'
+    output_model = '/mnt/azure/model/latest.onnx'
 
-// csv headers:
-//   0   1          2               3         4           5       6                 7                   8
-// hmid,wid,reflection_period,original_hm,cleaned_hm,modified,num_sentence,ground_truth_category,predicted_category
-const int CLEANED_HM = 4;
-const int PREDICTED_CAT = 8;
-
-// create reader
-var reader = TextLoader.CreateReader(env, ctx =>
-                                (Text: ctx.LoadText(CLEANED_HM),
-Category: ctx.LoadText(PREDICTED_CAT)),
-new MultiFileSource(trainDataPath),
-hasHeader: true,
-separator: ',');
+    operations['onnx'] = dsl.ContainerOp(
+        name='onnx',
+        image='onnx/onnx-ecosystem',
+        command=['python'],
+        arguments=[
+            '-c',
+            'import onnxmltools;' + \
+            'from keras.models import load_model;' + \
+            'model = load_model("{}");'.format(input_model) + \
+            'onnx_model = onnxmltools.convert_keras(model);' +
+            'onnxmltools.utils.save_model(onnx_model, "{}")'.format(output_model)
+        ],
+    )
+    operations['onnx'].after(operations['score'])
