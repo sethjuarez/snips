@@ -5,72 +5,45 @@ SendMode Event
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetKeyDelay, 2
 
-^+1::
-Loop, Read,  C:\projects\snips\1.txt
+DoSnip(file)
 {
-    Send, {raw}%A_LoopReadLine%
-    Send, {Enter}
     Send, {Home}
+    Loop, Read, %file%
+    {
+        Send, {raw}%A_LoopReadLine%
+        Send, {Enter}
+        Send, {Home}
+    } 
 }
+
+^+1::
+DoSnip("C:\projects\snips\1.txt")
 return
 
 ^+2::
-Loop, Read,  C:\projects\snips\2.txt
-{
-    Send, {raw}%A_LoopReadLine%
-    Send, {Enter}
-    Send, {Home}
-}
+DoSnip("C:\projects\snips\2.txt")
 return
 
 ^+3::
-Loop, Read,  C:\projects\snips\3.txt
-{
-    Send, {raw}%A_LoopReadLine%
-    Send, {Enter}
-    Send, {Home}
-}
+DoSnip("C:\projects\snips\3.txt")
 return
 
 ^+4::
-Loop, Read,  C:\projects\snips\4.txt
-{
-    Send, {raw}%A_LoopReadLine%
-    Send, {Enter}
-    Send, {Home}
-}
+DoSnip("C:\projects\snips\4.txt")
 return
 
 ^+5::
-Loop, Read,  C:\projects\snips\5.txt
-{
-    Send, {raw}%A_LoopReadLine%
-    Send, {Enter}
-    Send, {Home}
-}
+DoSnip("C:\projects\snips\5.txt")
 return
 
 ^+6::
-Loop, Read,  C:\projects\snips\6.txt
-{
-    Send, {raw}%A_LoopReadLine%
-    Send, {Enter}
-    Send, {Home}
-}
+DoSnip("C:\projects\snips\6.txt")
 return
 
 ^+7::
-Loop, Read,  C:\projects\snips\7.txt
-{
-    Send, {raw}%A_LoopReadLine%
-    Send, {Enter}
-    Send, {Home}
-}
+DoSnip("C:\projects\snips\7.txt")
 return
 
 ^+u::
-FileRead, textVar, C:\projects\snips\u.txt
-textVar := StrReplace(textVar, "`r`n", "`n")
-Send, {raw}%textVar%
-Send,{Enter}
+DoSnip("C:\projects\snips\u.txt")
 return

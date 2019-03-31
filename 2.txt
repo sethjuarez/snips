@@ -1,18 +1,2 @@
-    #onnx
-    input_model = '/mnt/azure/model/latest.h5'
-    output_model = '/mnt/azure/model/latest.onnx'
-
-    operations['onnx'] = dsl.ContainerOp(
-        name='onnx',
-        image='onnx/onnx-ecosystem',
-        command=['python'],
-        arguments=[
-            '-c',
-            'import onnxmltools;' + \
-            'from keras.models import load_model;' + \
-            'model = load_model("{}");'.format(input_model) + \
-            'onnx_model = onnxmltools.convert_keras(model);' +
-            'onnxmltools.utils.save_model(onnx_model, "{}")'.format(output_model)
-        ],
-    )
-    operations['onnx'].after(operations['score'])
+            _session = new InferenceSession(file);
+            textUrl.Text = $"Model: {Path.GetFileName(file)}";  

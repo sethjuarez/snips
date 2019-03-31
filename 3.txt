@@ -1,1 +1,16 @@
-kubectl port-forward svc/ambassador -n kubeflow 8080:80
+            var now = DateTime.Now;
+            Tensor<float> x = new DenseTensor<float>(digit.Length);
+
+            var input = new List<NamedOnnxValue>() {
+                NamedOnnxValue.CreateFromTensor("0", x)
+            };
+
+            var prediction = _session.Run(input)
+                                     .First()
+                                     .AsTensor<float>()
+                                     .ToArray();
+
+            var r = Array.IndexOf(prediction, prediction.Max());
+            var time = (DateTime.Now - now).TotalSeconds;
+
+            ShowResult(r, prediction, time);

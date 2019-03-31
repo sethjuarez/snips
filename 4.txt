@@ -1,0 +1,3 @@
+            // normalize
+            for (int i = 0; i < digit.Length; i++)
+                x[i] = ((digit[i] / 255) - 0.1307f) / 0.3081f;
