@@ -1,1 +1,1 @@
-        private InferenceSession _session = null;
+az storage account create --name readerskillstorage --location eastus--resource-group ttcognitivesearch --sku Standard_LRS

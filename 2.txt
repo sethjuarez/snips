@@ -1,2 +1,1 @@
-            _session = new InferenceSession(file);
-            textUrl.Text = $"Model: {Path.GetFileName(file)}";  
+az functionapp create --resource-group ttcognitivesearch --consumption-plan-location eastus --name readerskill --storage-account readerskillstorage --runtime python

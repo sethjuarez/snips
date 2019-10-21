@@ -5,45 +5,44 @@ SendMode Event
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 SetKeyDelay, 50
 
-DoSnip(file)
+DoSnip(line)
 {
-    Send, {Home}
-    Loop, Read, %file%
-    {
-        Send, {raw}%A_LoopReadLine%
-        Send, {Enter}
-        Send, {Home}
-    } 
+    FileReadLine, out, C:\projects\snips\lines.txt, line
+    Send, {raw}%out%
 }
 
 ^+1::
-DoSnip("C:\projects\snips\1.txt")
+DoSnip(1)
 return
 
 ^+2::
-DoSnip("C:\projects\snips\2.txt")
+DoSnip(2)
 return
 
 ^+3::
-DoSnip("C:\projects\snips\3.txt")
+DoSnip(3)
 return
 
 ^+4::
-DoSnip("C:\projects\snips\4.txt")
+DoSnip(4)
 return
 
 ^+5::
-DoSnip("C:\projects\snips\5.txt")
+DoSnip(5)
 return
 
 ^+6::
-DoSnip("C:\projects\snips\6.txt")
+DoSnip(6)
 return
 
 ^+7::
-DoSnip("C:\projects\snips\7.txt")
+DoSnip(7)
 return
 
-^+u::
-DoSnip("C:\projects\snips\u.txt")
+^+8::
+DoSnip(8)
+return
+
+^+9::
+DoSnip(9)
 return
