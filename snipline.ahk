@@ -46,3 +46,7 @@ return
 ^+9::
 DoSnip(9)
 return
+
+^+0::
+DoSnip(10)
+return

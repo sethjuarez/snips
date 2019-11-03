@@ -1,9 +1,2 @@
-func init InvoiceReaderSkill
-cd InvoiceReaderSkill
-func new
-AnalyzeInvoice
-import json
-body=json.dumps({ 'status': 'IT WORKED!' })
-az storage account create --name readerskillstorage --location eastus--resource-group ttcognitivesearch --sku Standard_LRS
-az functionapp create --resource-group ttcognitivesearch --consumption-plan-location eastus --name readerskill --storage-account readerskillstorage --runtime python
-func azure functionapp publish readerskill --build remote
+python game.py | less
+python game.py
