@@ -12,10 +12,12 @@ DoSnip(item) {
   if items.Length >= item {
     buf := FileRead(items[item], "UTF-8")
     lines := StrSplit(buf, "`n", "`r")
+    BlockInput True
     Loop lines.Length {
       Send "{raw}" . lines[A_Index]
       Send "{Enter}"
     }
+    BlockInput False
   }
 }
 

@@ -8,7 +8,9 @@ lines := StrSplit(buf, "`n", "`r")
 
 DoSnip(line) {
   if lines.Length >= line {
+      BlockInput True
       Send "{raw}" . lines[line]
+      BlockInput False
   }
 }
 
