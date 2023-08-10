@@ -1,0 +1,6 @@
+function add(a, b) {
+  //testing indentation
+  return function() {
+    return a + b;
+  };
+}
