@@ -3,14 +3,38 @@ SendMode "Event"
 SetKeyDelay 25
 
 linesFile := FileSelect(1, ".", "Select Lines File", "Text Documents (*.txt)")
-buf := FileRead(linesFile, "UTF-8")
-lines := StrSplit(buf, "`n", "`r")
+if linesFile = ""
+    items := []
+else
+{
+  buf := FileRead(linesFile, "UTF-8")
+  items := StrSplit(buf, "`n", "`r")
+}
+
+contentsFile := FileSelect(1, ".", "Select Contents File (Separated by \n=====\n)", "Text Documents (*.txt)")
+if contentsFile = ""
+    clines := []
+else
+{
+  cbuf := FileRead(contentsFile, "UTF-8")
+  clines := StrSplit(cbuf, "=====", "`r")
+}
+
 
 DoSnip(line) {
-  if lines.Length >= line {
-      BlockInput True
-      Send "{raw}" . lines[line]
-      BlockInput False
+  
+  if items.Length >= line {
+    BlockInput True
+    Send "{raw}" . items[line]
+    BlockInput False
+  }
+}
+
+DoContent(line) {
+  if clines.Length >= line {
+    o := Trim(clines[line], "`n`r")
+    A_Clipboard := o
+    Send "^v"
   }
 }
 
@@ -24,3 +48,13 @@ DoSnip(line) {
 ^+8::DoSnip(8)
 ^+9::DoSnip(9)
 ^+0::DoSnip(10)
+^+q::DoContent(1)
+^+w::DoContent(2)
+^+e::DoContent(3)
+^+r::DoContent(4)
+^+t::DoContent(5)
+^+y::DoContent(6)
+^+u::DoContent(7)
+^+i::DoContent(8)
+^+o::DoContent(9)
+^+p::DoContent(10)
