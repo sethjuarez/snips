@@ -52,3 +52,4 @@ DoContent(line) {
 ^+w::DoContent(2)
 ^+e::DoContent(3)
 ^+r::DoContent(4)
+^+t::DoContent(4)
